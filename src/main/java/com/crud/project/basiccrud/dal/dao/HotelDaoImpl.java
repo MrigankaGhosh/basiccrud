@@ -1,5 +1,6 @@
 package com.crud.project.basiccrud.dal.dao;
 
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -8,6 +9,8 @@ import com.crud.project.basiccrud.dal.entities.Hotel;
 
 @Repository
 public class HotelDaoImpl implements HotelDao {
+	
+	public static final Logger log = Logger.getLogger(HotelDaoImpl.class);
 
 	@Autowired
 	HibernateTemplate hibernateTemplate;
@@ -37,8 +40,9 @@ public class HotelDaoImpl implements HotelDao {
 	}
 
 	@Override
-	public Hotel displayOne(int id) {
-		Hotel hotel = hibernateTemplate.get(Hotel.class, id);
+	public Hotel displayOne(String name) {
+		log.info("..........displayOne method");
+		Hotel hotel = hibernateTemplate.get(Hotel.class, name);
 		return hotel;
 	}
 

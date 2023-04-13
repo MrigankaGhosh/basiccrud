@@ -10,7 +10,7 @@ public interface HotelDao {
 
 	public void delete(Hotel hotel);
 
-	public Hotel displayOne(int id);
+	public Hotel displayOne(String name);
 
 	public boolean contains(Hotel hotel);
 }
