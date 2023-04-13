@@ -45,8 +45,8 @@ public class HotelServiceImpl implements HotelService {
 
 	@Override
 	@Transactional
-	public Hotel displayOne(int id) {
-		return hotelDao.displayOne(id);
+	public Hotel displayOne(String name) {
+		return hotelDao.displayOne(name);
 	}
 
 	@Override

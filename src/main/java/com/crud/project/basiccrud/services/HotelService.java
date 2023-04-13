@@ -12,5 +12,5 @@ public interface HotelService {
 
 	public boolean contains(Hotel hotel);
 
-	public Hotel displayOne(int id);
+	public Hotel displayOne(String name);
 }
