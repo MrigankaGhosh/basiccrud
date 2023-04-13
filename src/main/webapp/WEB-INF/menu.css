@@ -1,0 +1,38 @@
+.menu {
+  background-color: #F4EEE0;
+  border: 2px solid #393646;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px #393646;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 6rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu-btn {
+  background-color: #393646;
+  border: none;
+  border-radius: 5px;
+  color: #F4EEE0;
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+  padding: 1rem 6rem 1rem 6rem;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.menu-btn:hover {
+    color: #ff0008;
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+    max-width: 100%;
+  }
+}
