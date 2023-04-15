@@ -183,7 +183,7 @@ tbody tr:nth-child(even) {
 		</div>
 		<ul class="nav-links">
 			<li><a href="/basiccrud/addHotelPage">Add</a></li>
-			<li><a href="/basiccrud/deleteHotelPage">Delete</a></li>
+			<li><a href="/basiccrud/display">Display</a></li>
 		</ul>
 		<div class="burger">
 			<div class="line"></div>
@@ -211,8 +211,8 @@ tbody tr:nth-child(even) {
 					<tr>
 						<td>${hotel.id}</td>
 						<td>${hotel.name}</td>
-						<td>${hotel.rent}</td>
-						<td>${hotel.rating}</td>
+						<td>Rs. ${hotel.rent}</td>
+						<td>${hotel.rating} stars</td>
 					</tr>
 				</c:forEach>
 			</tbody>

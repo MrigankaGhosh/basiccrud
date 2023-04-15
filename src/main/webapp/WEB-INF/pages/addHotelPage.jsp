@@ -202,7 +202,7 @@ button[type="submit"]:hover {
 		</div>
 		<ul class="nav-links">
 			<li><a href="/basiccrud/addHotelPage">Add</a></li>
-			<li><a href="/basiccrud/deleteHotelPage">Delete</a></li>
+			<li><a href="/basiccrud/display">Display</a></li>
 		</ul>
 		<div class="burger">
 			<div class="line"></div>
