@@ -1,5 +1,7 @@
 package com.crud.project.basiccrud.services;
 
+import java.util.List;
+
 import com.crud.project.basiccrud.dal.entities.Hotel;
 
 public interface HotelService {
@@ -8,9 +10,7 @@ public interface HotelService {
 
 	public void update(Hotel hotel);
 
-	public boolean delete(Hotel hotel);
+	public void delete(Hotel hotel);
 
-	public boolean contains(Hotel hotel);
-
-	public Hotel displayOne(String name);
+	public List<Hotel> display();
 }

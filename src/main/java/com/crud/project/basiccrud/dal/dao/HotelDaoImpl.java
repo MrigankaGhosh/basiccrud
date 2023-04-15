@@ -1,5 +1,7 @@
 package com.crud.project.basiccrud.dal.dao;
 
+import java.util.List;
+
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -31,27 +33,20 @@ public class HotelDaoImpl implements HotelDao {
 
 	@Override
 	public void update(Hotel hotel) {
+		log.info(".........Update method in HotelDaoIml executed");
 		hibernateTemplate.update(hotel);
 	}
 
 	@Override
 	public void delete(Hotel hotel) {
+		log.info(".........Delete method in HotelDaoIml executed");
 		hibernateTemplate.delete(hotel);
 	}
 
 	@Override
-	public Hotel displayOne(String name) {
-		log.info("..........displayOne method");
-		Hotel hotel = hibernateTemplate.get(Hotel.class, name);
-		return hotel;
+	public List<Hotel> display() {
+		log.info(".........DisplayOne method in HotelDaoIml executed");
+		//Hotel hotel = hibernateTemplate.get(Hotel.class);
+		return hibernateTemplate.loadAll(Hotel.class);
 	}
-
-	@Override
-	public boolean contains(Hotel hotel) {
-		if (hibernateTemplate.contains(hotel)) {
-			return true;
-		}
-		return false;
-	}
-
 }

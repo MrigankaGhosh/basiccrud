@@ -1,5 +1,7 @@
 package com.crud.project.basiccrud.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,27 +37,14 @@ public class HotelServiceImpl implements HotelService {
 
 	@Override
 	@Transactional
-	public boolean delete(Hotel hotel) {
-		if (hotelDao.contains(hotel)) {
-			hotelDao.delete(hotel);
-			return true;
-		}
-		return false;
+	public void delete(Hotel hotel) {
+		hotelDao.delete(hotel);
 	}
 
 	@Override
 	@Transactional
-	public Hotel displayOne(String name) {
-		return hotelDao.displayOne(name);
-	}
-
-	@Override
-	@Transactional
-	public boolean contains(Hotel hotel) {
-		if (hotelDao.contains(hotel)) {
-			return true;
-		}
-		return false;
+	public List<Hotel> display() {
+		return hotelDao.display();
 	}
 
 }

@@ -35,7 +35,7 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		name="dataSource" p:driverClassName="com.mysql.jdbc.Driver"
 		p:url="jdbc:mysql://localhost:3306/crudapp" p:username="root"
-		p:password="@@2263111" />
+		p:password="Mg@15001" />
 
 	<!-- Hibernate configuration -->
 

@@ -1,9 +1,10 @@
-package com.crud.project.basiccrud;
+package com.crud.project.basiccrud.controllers;
+
+import java.util.List;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import com.crud.project.basiccrud.services.HotelService;
 
 @Controller
 public class HotelController {
-	
+
 	public static final Logger log = Logger.getLogger(HotelController.class);
 
 	@Autowired
@@ -28,12 +29,8 @@ public class HotelController {
 		this.service = service;
 	}
 
-	@RequestMapping("homePage")
-	public String homePage() {
-		log.info(".............Inside homePage controller.........");
-		return "homePage";
-	}
-	
+	// Add Hotel
+
 	@RequestMapping("addHotelPage")
 	public String addHotelPage() {
 		log.info(".............Inside addHotelPage controller.........");
@@ -43,42 +40,48 @@ public class HotelController {
 	@RequestMapping(value = "addHotel", method = RequestMethod.POST)
 	public String addHotel(@ModelAttribute("hotel") Hotel hotel, ModelMap model) {
 		int result = service.add(hotel);
+		log.info(".............Inside addHotel controller.........");
 		model.addAttribute("result", "Hotel Data with ID: " + result + " added successfully!!!");
 		return "addHotelPage";
+	}
+
+	// Update Hotel
+
+	@RequestMapping("updateHotelPage")
+	public String updateHotelPage() {
+		log.info(".............Inside addHotelPage controller.........");
+		return "updateHotelPage";
 	}
 
 	@RequestMapping(value = "updateHotel", method = RequestMethod.POST)
 	public String updateHotel(@ModelAttribute("hotel") Hotel hotel, ModelMap model) {
 		service.update(hotel);
 		model.addAttribute("result", "Hotel Data updated successully !!");
-		return "updateHotel";
+		return "updateHotelPage";
+	}
+
+	// Delete Code
+
+	@RequestMapping("deleteHotelPage")
+	public String deleteHotelPage() {
+		log.info(".............Inside deleteHotelPage controller.........");
+		return "deleteHotelPage";
 	}
 
 	@RequestMapping(value = "deleteHotel", method = RequestMethod.POST)
 	public String deleteHotel(@ModelAttribute("hotel") Hotel hotel, ModelMap model) {
-		if (service.delete(hotel)) {
-			model.addAttribute("result", "Successfully deleted Hotel info !!");
-		} else {
-			model.addAttribute("result", "Hotel data is invalid");
-		}
-		return "deleteHotel";
+		log.info(".........DeleteHotel method in HotelController executed");
+		service.delete(hotel);
+		return "deleteHotelPage";
 	}
 
-	@RequestMapping(value = "containsHotel", method = RequestMethod.POST)
-	public String containsHotel(@ModelAttribute("hotel") Hotel hotel, ModelMap model) {
-		if (service.contains(hotel)) {
-			model.addAttribute("result", "Hotel information with id: " + hotel.getId() + " is present !!");
-		} else {
-			model.addAttribute("result", "Hotel information with id: " + hotel.getId() + " is NOT present !!");
-		}
-		return "containsHotel";
-	}
-	
-	@RequestMapping(value="displayOne", method=RequestMethod.POST)
-	public String displayOne(@ModelAttribute("name") String name, Model model) {
-		log.info(".............Inside displayOne controller.........");
-		Hotel hotel = service.displayOne(name);
-		model.addAttribute("hotel", hotel);
-		return "displayOne";
+	// Display One Hotel
+
+	@RequestMapping("display")
+	public String display(ModelMap model) {
+		log.info(".............Inside display controller.........");
+		List<Hotel> hotels = service.display();
+		model.addAttribute("hotels", hotels);
+		return "displayPage";
 	}
 }
